@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Costos ABC</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Librería para leer Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- Librería para dashboards -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Sistema Informático de Costos ABC</h1>
+    <p>Costeo basado en actividades por órdenes de trabajo</p>
+</header>
+
+<main class="container">
+
+    <section class="panel">
+        <h2>Importar Base de Datos Excel</h2>
+
+        <input type="file" id="excelFile" accept=".xlsx,.xls">
+
+        <button onclick="leerExcel()">Importar Excel</button>
+        <button onclick="calcularCostos()">Calcular Costos</button>
+    </section>
+
+    <section class="panel filtros">
+        <h2>Filtros de Análisis</h2>
+
+        <label for="periodo">Periodo:</label>
+        <select id="periodo">
+            <option value="Todos">Todos</option>
+        </select>
+
+        <button onclick="filtrarPorPeriodo()">Aplicar Filtro</button>
+        <button onclick="calcularCostos()">Ver Todo</button>
+        <button onclick="descargarInformeWord()">Descargar Informe Word</button>
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <h3>Costo Total</h3>
+            <p id="totalProduccion">S/ 0.00</p>
+        </div>
+
+        <div class="card">
+            <h3>Costo Promedio</h3>
+            <p id="costoPromedio">S/ 0.00</p>
+        </div>
+
+        <div class="card">
+            <h3>Ventas Totales</h3>
+            <p id="ventasTotales">S/ 0.00</p>
+        </div>
+
+        <div class="card">
+            <h3>Rentabilidad</h3>
+            <p id="rentabilidad">0%</p>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Hoja de Costos por Orden de Trabajo</h2>
+
+        <div class="table-container">
+            <table id="tablaCostos">
+                <thead>
+                    <tr>
+                        <th>OT</th>
+                        <th>Producto</th>
+                        <th>Cliente</th>
+                        <th>Periodo</th>
+                        <th>Cantidad</th>
+                        <th>MD</th>
+                        <th>MOD</th>
+                        <th>CIF</th>
+                        <th>Costo Total</th>
+                        <th>Costo Unitario</th>
+                        <th>Ventas</th>
+                        <th>Utilidad</th>
+                        <th>Rentabilidad</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Dashboard de Costos</h2>
+
+        <div class="chart-grid">
+            <div class="chart-card">
+                <h3>Estructura de Costos</h3>
+                <canvas id="graficoEstructuraCostos"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Costo Total por OT</h3>
+                <canvas id="graficoCostoOT"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Rentabilidad por OT</h3>
+                <canvas id="graficoRentabilidad"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Costos por Periodo</h3>
+                <canvas id="graficoPeriodo"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Ventas vs Costos</h3>
+                <canvas id="graficoVentasCostos"></canvas>
+            </div>
+
+            <div class="chart-card">
+                <h3>Pareto de Costos</h3>
+                <canvas id="graficoPareto"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Objetos de Costo</h2>
+
+        <div class="table-container">
+            <table id="tablaObjetosCosto">
+                <thead>
+                    <tr>
+                        <th>Objeto de Costo</th>
+                        <th>OT Asociadas</th>
+                        <th>Cantidad Total</th>
+                        <th>Costo Total</th>
+                        <th>Ventas Totales</th>
+                        <th>Utilidad</th>
+                        <th>Rentabilidad</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Análisis de Relevancia de la Estructura de Costos</h2>
+
+        <div class="table-container">
+            <table id="tablaRelevancia">
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Monto</th>
+                        <th>Participación</th>
+                        <th>Interpretación</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Propuestas de Mejora con Impacto en la Rentabilidad</h2>
+
+        <div id="propuestasMejora" class="propuestas"></div>
+    </section>
+
+    <section class="panel">
+        <h2>Inventario - Valorización Promedio</h2>
+
+        <div class="table-container">
+            <table id="tablaInventario">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Material</th>
+                        <th>Stock Inicial</th>
+                        <th>Costo Unitario</th>
+                        <th>Entradas</th>
+                        <th>Salidas</th>
+                        <th>Costo Promedio</th>
+                        <th>Stock Final</th>
+                        <th>Valor Final</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Actividades ABC</h2>
+
+        <div class="table-container">
+            <table id="tablaABC">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Cost Driver</th>
+                        <th>Costo Total</th>
+                        <th>Volumen Driver</th>
+                        <th>Tasa ABC</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

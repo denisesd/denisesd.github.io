@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6fb;
+    color: #1f2937;
+}
+
+header {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+    padding: 28px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.container {
+    width: 95%;
+    max-width: 1500px;
+    margin: 30px auto;
+}
+
+.panel {
+    background: white;
+    padding: 22px;
+    margin-bottom: 24px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.panel h2 {
+    margin-bottom: 18px;
+    color: #1e3a8a;
+}
+
+input,
+select,
+button {
+    padding: 11px 13px;
+    margin: 8px 8px 8px 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.filtros label {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    border-left: 6px solid #2563eb;
+}
+
+.card h3 {
+    font-size: 15px;
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+}
+
+th,
+td {
+    border: 1px solid #e5e7eb;
+    padding: 11px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background: #1e3a8a;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+tbody tr:hover {
+    background: #e0f2fe;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.chart-card {
+    background: #f8fafc;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    min-height: 280px;
+    position: relative;
+    transition: 0.25s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.chart-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 220px !important;
+}
+
+.positivo {
+    color: #15803d;
+    font-weight: bold;
+}
+
+.negativo {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.propuestas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.propuesta-card {
+    background: #f8fafc;
+    border-left: 6px solid #2563eb;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.propuesta-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.propuesta-card p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.propuesta-card strong {
+    color: #0f172a;
+}
+
+.alerta {
+    border-left-color: #dc2626;
+}
+
+.oportunidad {
+    border-left-color: #16a34a;
+}
+
+@media (max-width: 1200px) {
+    .chart-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1100px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .propuestas {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 750px) {
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card canvas {
+        height: 240px !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .container {
+        width: 96%;
+    }
+}
