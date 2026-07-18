@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto - Estudio Requena Abogados Asociados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="form-page">
+    <nav class="menu contact-menu">
+        <div class="logo-box">
+            <a href="index.html?skipIntro=1" aria-label="Volver a la pantalla principal">
+                <img src="logoblanco.png" alt="Estudio Requena">
+            </a>
+        </div>
+
+        <ul class="navbar contact-navbar">
+            <li><a href="index.html#nosotros">Nosotros</a></li>
+            <li><a href="index.html#areas">&Aacute;reas de Pr&aacute;ctica</a></li>
+            <li><a href="index.html#directorio">Directorio</a></li>
+            <li><a href="formulario-contacto.html">Cont&aacute;ctenos</a></li>
+        </ul>
+    </nav>
+
+    <section class="form-section">
+        <div class="form-left">
+            <form class="contact-form" action="https://formsubmit.co/ajax/estudiorequena89@gmail.com" method="post">
+                <input type="hidden" name="_subject" value="Nuevo mensaje desde la pagina web">
+                <input type="hidden" name="_captcha" value="false">
+                <h1>CONT&Aacute;CTENOS</h1>
+                <p class="form-intro">Ingrese sus datos y a la brevedad nos pondremos en contacto con usted.</p>
+
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="Nombre" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="Apellidos" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="correo">Correo electr&oacute;nico</label>
+                        <input type="email" id="correo" name="Correo electronico" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="celular">Celular</label>
+                        <input type="tel" id="celular" name="Celular" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="Empresa" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="documento">RUC/DNI</label>
+                        <input type="text" id="documento" name="RUC o DNI" required>
+                    </div>
+
+                    <div class="form-field form-field-full budget-title">
+                        <h2>Registro de presupuesto</h2>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="presupuesto-original-presupuestado">Presupuesto original - Presupuestado</label>
+                        <input type="number" id="presupuesto-original-presupuestado" name="Presupuesto original presupuestado" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="presupuesto-original-real">Presupuesto original - Real</label>
+                        <input type="number" id="presupuesto-original-real" name="Presupuesto original real" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="presupuesto-forecast-presupuestado">Presupuesto revisado (forecast) - Presupuestado</label>
+                        <input type="number" id="presupuesto-forecast-presupuestado" name="Presupuesto revisado forecast presupuestado" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="presupuesto-forecast-real">Presupuesto revisado (forecast) - Real</label>
+                        <input type="number" id="presupuesto-forecast-real" name="Presupuesto revisado forecast real" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-field form-field-full">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="Mensaje" rows="3" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="privacy-check">
+                        <input type="checkbox" name="Acepta politicas de privacidad" required>
+                        <span>Acepto las pol&iacute;ticas de privacidad</span>
+                    </label>
+                    <span>Todos los campos son obligatorios</span>
+                </div>
+
+                <button type="submit" class="form-submit">ENVIAR</button>
+            </form>
+        </div>
+
+        <aside class="map-panel">
+            <h2>Ub&iacute;quenos</h2>
+            <p>Juan Antonio Ribeyro 144, Jes&uacute;s Mar&iacute;a, Lima</p>
+            <iframe
+                title="Mapa de Estudio Requena"
+                src="https://www.google.com/maps?q=Juan%20Antonio%20Ribeyro%20144%2C%20Jesus%20Maria%2C%20Lima&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </aside>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-logo-item">
+                <img src="celular.png" alt="Celular">
+            </div>
+
+            <div class="footer-logo-item">
+                <img src="correo.png" alt="Correo">
+            </div>
+
+            <div class="footer-logo-item">
+                <img src="horario.png" alt="Horario">
+            </div>
+
+            <div class="footer-logo-item logo-central">
+                <img src="logoblanco.png" alt="Estudio Requena">
+            </div>
+        </div>
+
+        <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61590961628624" target="_blank" rel="noopener noreferrer">
+                <img src="red1.png" alt="Facebook">
+            </a>
+
+            <a href="https://x.com/EstudioRequena8" target="_blank" rel="noopener noreferrer">
+                <img src="red2.png" alt="X">
+            </a>
+
+            <a href="https://www.linkedin.com/in/estudio-requena-abogados-asociados-084568418/" target="_blank" rel="noopener noreferrer">
+                <img src="red3.png" alt="LinkedIn">
+            </a>
+
+            <a href="https://www.instagram.com/estudiorequena89/" target="_blank" rel="noopener noreferrer">
+                <img src="red4.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+
+    <a class="whatsapp-float" href="#" aria-label="WhatsApp">
+        <img src="was.png" alt="WhatsApp">
+    </a>
+</main>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
